@@ -1,7 +1,11 @@
 
 # Wordle
 
+This is a word finding game
 
+We write a word, If the box containing the character is gray, it is wrong; if it is yellow, its place is wrong; if it is green, its place is correct.
+
+We can only try 6 times. If we find the word we win, if we can't find it we lose.
 
 # Gameplay
 
