@@ -14,7 +14,6 @@ public class CellController : MonoBehaviour
     [SerializeField] Image background;
     [SerializeField] TextMeshProUGUI text;
 
-
     public void UpdateText(char msg)
     {
         text.SetText(msg.ToString());

@@ -11,12 +11,15 @@ public class ContentController : MonoBehaviour
     [SerializeField] List<RowController> rows;
     [SerializeField] WordManager wordManager;
 
+    [SerializeField] TextMeshProUGUI winLoseText;
+
     int _index; 
 
     void Start() 
     {
         inputField.onValueChanged.AddListener(OnUpdateContent);
         inputField.onSubmit.AddListener(onSubmit);
+        winLoseText.gameObject.SetActive(false);
     }
 
     void OnUpdateContent(string msg)
@@ -45,13 +48,15 @@ public class ContentController : MonoBehaviour
 
         if(IsEnough())
         {
-            Debug.Log("yetersiz karakter"); return;
+            Debug.Log("inadequate character");
+            return;
         }
 
         var isWon = UpdateState();
         if(isWon) 
         {
-            Debug.Log("kazandınız");
+            winLoseText.gameObject.SetActive(true);
+            winLoseText.text = "You Won";
             inputField.enabled = false;
             return; 
         }
@@ -60,7 +65,8 @@ public class ContentController : MonoBehaviour
 
         if(_index == rows.Count)
         {
-            Debug.Log("kaybettin");
+            winLoseText.gameObject.SetActive(true);
+            winLoseText.text = "You Lose";
             inputField.enabled = false;
             return;
         }
